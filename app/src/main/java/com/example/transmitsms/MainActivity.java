@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
     /**
      * 保存按钮执行的函数
      * 会把关键字和电话号码保存到本activity的配置文件中
-     * @param view
      */
     public void saveButton(View view) {
         EditText keywordEdit = findViewById(R.id.editText);
@@ -116,14 +115,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             StringBuilder content = new StringBuilder();//用于存储短信内容
-            String sender = null;//存储短信发送方手机号
             Bundle bundle = intent.getExtras();//通过getExtras()方法获取短信内容
             String format = intent.getStringExtra("format");
             if (bundle != null) {
                 Object[] pdus = (Object[]) bundle.get("pdus");//根据pdus关键字获取短信字节数组，数组内的每个元素都是一条短信
                 for (Object object : pdus) {
                     SmsMessage message = SmsMessage.createFromPdu((byte[]) object, format);//将字节数组转化为Message对象
-                    sender = message.getOriginatingAddress();//获取短信手机号
                     content.append(message.getMessageBody());//获取短信内容
 
 
@@ -150,9 +147,6 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * 发送短信
-     * @param smsManager
-     * @param messageBody
-     * @param phones
      */
     public void sendMessageByPhones(SmsManager smsManager, String messageBody, HashSet<String> phones) {
         for (String phone : phones) {
