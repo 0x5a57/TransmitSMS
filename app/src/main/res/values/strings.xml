@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TransmitSMS</string>
+    <string name="keyword_input_prompt">请输入关键字，如果留空则转发全部短信</string>
+    <string name="phone_input_prompt">请输入要转发的电话号码。如果有多个号码使用#隔开</string>
+    <string name="phone_example">13xxxxxxxxx#13yyyyyyyyy</string>
+    <string name="nomessage">无转发短信</string>
+    <string name="save_button">保存</string>
+    <string name="default_action_message">这里将会显示转发的动作</string>
+</resources>
